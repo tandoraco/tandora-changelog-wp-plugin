@@ -29,3 +29,6 @@ _banner.innerHTML = "";
 ## References
 - https://dillieodigital.wordpress.com/2014/05/14/how-to-embed-full-page-iframes-with-busting-in-wordpress/
 - https://stackoverflow.com/questions/43807596/how-can-i-display-a-full-screen-iframe-on-top-of-wp-page
+- https://www.sitepoint.com/an-introduction-to-wordpress-plugin-development/
+- https://www.sitepoint.com/real-world-example-wordpress-plugin-development/
+
