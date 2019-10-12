@@ -7,6 +7,23 @@
     - `docker-compose up`
     - After this visit localhost:8000 in browser to use wordpress locally.
 
+## Dev testing
+
+- Compress the tandora folder in this repo to a zip file.
+- Go to `http://localhost:8000/wp-admin/plugin-install.php`
+     - Then click upload plugin.
+     - Upload the zip file and click install now.
+     - Then click activate plugin
+- Now add new post `http://localhost:8000/wp-admin/post-new.php`
+    - In the content area place the following text
+        
+        ```
+        [tandora widget_url="https://app.tandora.co/tandora changelog/1"]
+        ```
+    - Now save or click preview. Verify tandora widget is rendered.
+    - *Note: Only if widget url is present in above, tandora widget will be rendered.*
+- If you want to test the changes done to code after plugin is installed, first deactivate the plugin. Then delete the plugin. Now upload the updated zip file, install and activate to test the updated plugin.
+
 ## Using tandora widget page with Advanced iframe plugin
 
  - Use the following code and replace the src with appropriate widget url
