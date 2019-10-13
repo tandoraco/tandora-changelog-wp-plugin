@@ -31,19 +31,25 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 class wp_tandora{
-		
+				
 	//magic function (triggered on initialization)
 	public function __construct(){
-		add_action('init', array($this,'register_tandora_content_type')); //register tandora content type
-		add_action('admin_enqueue_scripts', array($this,'enqueue_admin_scripts_and_styles')); //admin scripts and styles
-		add_action('wp_enqueue_scripts', array($this,'enqueue_public_scripts_and_styles')); //public scripts and styles
-		
-		//add_filter('the_content', array($this,'prepend_tandora_meta_to_content')); //gets our meta data and dispayed it before the content
-
+		add_action('media_buttons', array($this, 'addTandoraButton'), 11);  // add tandora button to new / edit post page
+		add_action('admin_print_footer_scripts', array($this, 'addTandoraButtonJs'), 199); // add js that will insert tandora shortcode when button is clicked.
 		register_activation_hook(__FILE__, array($this,'plugin_activate')); //activate hook
 		register_deactivation_hook(__FILE__, array($this,'plugin_deactivate')); //deactivate hook
 	}
+
+	//triggered on activation of the plugin (called only once)
+	public function plugin_activate(){
+		//call our custom content type function
+	 	$this->register_tandora_plugin();
+	}
 	
+	//trigered on deactivation of the plugin (called only once)
+	public function plugin_deactivate(){
+	}
+
 	public function register_tandora_plugin() {
 		//Labels for post type
 		 $labels = array(
@@ -51,7 +57,6 @@ class wp_tandora{
             'singular_name'      => 'Tandora',
             'menu_name'          => 'Tandora',
             'name_admin_bar'     => 'Tandora',
-            'add_new'            => 'Add New Tandora', 
         );
         //arguments for post type
         $args = array(
@@ -71,31 +76,21 @@ class wp_tandora{
         );
 		register_post_type('wp_tandora', $args);
 	}
-
-	//triggered on activation of the plugin (called only once)
-	public function plugin_activate(){
-		//call our custom content type function
-	 	$this->register_tandora_plugin();
+	
+    public function addTandoraButton() {
+        echo '<a title="Insert Tandora Widget" class="button" id="insert-tandora-widget" href="#">Add Tandora Widget</a>';
 	}
 	
-	//trigered on deactivation of the plugin (called only once)
-	public function plugin_deactivate(){
+	public function addTandoraButtonJs() {
+ 		echo '<script type="text/javascript">
+              jQuery(document).ready(function(){
+                 jQuery("#insert-tandora-widget").click(function() {
+                    send_to_editor("[tandora widget_url=\"\"]");
+                    return false;
+                 });
+              });
+              </script>';
 	}
-
-	public function prepend_tandora_meta_to_content(){
-		return $html + '<b>Tandora</b>';
-	}
-
-	//enqueus scripts and stles on the back end
-	public function enqueue_admin_scripts_and_styles(){
-		wp_enqueue_style('wp_tandora_admin_styles', plugin_dir_url(__FILE__) . '/css/tandora_admin_styles.css');
-	}
-	
-	//enqueues scripts and styled on the front end
-	public function enqueue_public_scripts_and_styles(){
-		wp_enqueue_style('wp_tandora_public_styles', plugin_dir_url(__FILE__). '/css/tandora_public_styles.css');
-	}
-	
 }
 
 $wp_tandora = new wp_tandora;

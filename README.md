@@ -21,7 +21,9 @@
         [tandora widget_url="https://app.tandora.co/tandora changelog/1"]
         ```
     - Now save or click preview. Verify tandora widget is rendered.
+    
     - *Note: Only if widget url is present in above, tandora widget will be rendered.*
+
 - If you want to test the changes done to code after plugin is installed, first deactivate the plugin. Then delete the plugin. Now upload the updated zip file, install and activate to test the updated plugin.
 
 ## Using tandora widget page with Advanced iframe plugin
