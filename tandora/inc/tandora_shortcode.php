@@ -33,7 +33,7 @@ class wp_tandora_shortcode {
                 src="' . $widget_url .'" 
                 width="100%"  
                 height="100vh"  
-                scrolling="no"  
+                scrolling="yes"
                 frameborder="0"     
                 allowtransparency="true"  
                 style="display:block; width:100%; height:100vh;" ></iframe>';

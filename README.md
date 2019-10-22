@@ -45,6 +45,11 @@ _banner.innerHTML = "";
  </script>
 ```
 
+## Known issues
+
+- When iframe attribute scrolling is set to no, the content gets clipped in mobile view. As a temporary workaround, used scrolling="yes".
+    - https://stackoverflow.com/questions/9975810/make-iframe-automatically-adjust-height-according-to-the-contents-without-using
+
 ## References
 - https://dillieodigital.wordpress.com/2014/05/14/how-to-embed-full-page-iframes-with-busting-in-wordpress/
 - https://stackoverflow.com/questions/43807596/how-can-i-display-a-full-screen-iframe-on-top-of-wp-page
