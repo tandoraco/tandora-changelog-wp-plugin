@@ -13,7 +13,6 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Tandora
- * Plugin URI:        https://www.tandora.co/
  * Description:       Tandora is a SaaS app, which will be the first of its kind app built out of India that helps you to post product updates, change log, notifications, alerts and much more to your customers.
  * Version:           1.0.0
  * Author:            Tandora
